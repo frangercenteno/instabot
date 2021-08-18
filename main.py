@@ -4,6 +4,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 import getpass
 
+# change button selector to Follow Button 
+
+BUTTON_SELECTOR = '//button[@class="sqdOP  L3NKy   y3zKF     "]'
+
 class InstaBot:
 
     def __init__(self, username, password):
@@ -31,12 +35,12 @@ class InstaBot:
             bot.find_elements_by_xpath('//a[@href="/' + account + '/followers/"]')[0].click()
             time.sleep(3)
             for i in range(countFollowers):
-                bot.find_elements_by_xpath('//button[@class="sqdOP  L3NKy   y3zKF     "]')[i].click()
+                bot.find_elements_by_xpath(BUTTON_SELECTOR)[i].click()
                 
 
 accounts = []
 
-def getAcounts(num):   
+def getAccounts(num):   
     for i in range(num):
         user = input(f"User {i}: ")
         accounts.append(user)
@@ -48,17 +52,17 @@ if __name__ == "__main__":
     password = getpass.getpass("Enter Password: ")
     Bot = InstaBot(username,password)
     Bot.login()
-    opc = input("""     Choise 1 option\n1=Win Followers\n2=Unfollowers accounts\n===> """)
+    opc = input("""     Choice 1 option\n1=Win Followers\n2=Unfollowers accounts\n===> """)
     if opc == "1":
-        num = int(input("Number of acounts: ")) 
-        getAcounts(num)
-        allAcounts = int(input("Number of acounts to follow: "))
+        num = int(input("Number of accounts: ")) 
+        getAccounts(num)
+        allAccounts = int(input("Number of accounts to follow: "))
         if num == accounts.__len__():
-            Bot.winFollowers(accounts,allAcounts)
+            Bot.winFollowers(accounts,allAccounts)
             exit()
     elif opc == "2":
-        numm = int(input("Number of accounts to unfollow"))
-        Bot.unfollow(numm)
+        num = int(input("Number of accounts to unfollow"))
+        Bot.unfollow(num)
         exit()
     else:
         print("Invalid value")
