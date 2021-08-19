@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 import time
-import getpass
+
 # change button selector to Follow Button 
 
 BUTTON_SELECTOR = '//button[@class="sqdOP  L3NKy   y3zKF     "]'
